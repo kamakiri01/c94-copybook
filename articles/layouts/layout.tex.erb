@@ -24,7 +24,7 @@
 %%\usepackage{amsmath}
 \usepackage{amsmath,amssymb}
 \usepackage{multirow}
-
+\usepackage{pdfpages}
 
 %% if you use @<u>{} (underline), use jumoline.sty
 %%\usepackage{jumoline}
@@ -240,9 +240,7 @@
 <%-   else -%>
 \begin{titlepage}
 <%-     if @config["coverimage"] -%>
-  \begin{center}
-    \includegraphics[<%= @coverimageoption%>]{./images/<%= @config["coverimage"] %>}
-  \end{center}
+  \includepdf{./images/<%= @config["coverimage"] %>}
   \clearpage
 <%-     end -%>
 \thispagestyle{plainhead}
@@ -283,15 +281,15 @@
 \tableofcontents
 <%- end -%>
 
-\begingroup
-  \cleardoublepage
-  \edef\continuenumber{\endgroup
-    \noexpand\mainmatter
-    \setcounter{page}{\the\value{page}}%
-  }
+% \begingroup
+%   \cleardoublepage
+%   \edef\continuenumber{\endgroup
+%     \noexpand\mainmatter
+%     \setcounter{page}{\the\value{page}}%
+%   }
 
 \mainmatter
-\continuenumber
+% \continuenumber
 
 \renewcommand{\chaptermark}[1]{\markboth{\prechaptername\thechapter\postchaptername~#1}{}}
 <%= @input_files["CHAPS"] %>
