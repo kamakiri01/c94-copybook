@@ -18,3 +18,7 @@ services:
       - npm
       - run
       - lint
+  c94-copybook-onlytex:
+    <<: *default
+    entrypoint:
+      ["/bin/sh", "-c", "cd ./articles/book-pdf && uplatex -interaction=nonstopmode -file-line-error book.tex && uplatex -interaction=nonstopmode -file-line-error book.tex && uplatex -interaction=nonstopmode -file-line-error book.tex && dvipdfmx -d 5 -z 9 book.dvi"]
