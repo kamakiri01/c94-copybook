@@ -1,0 +1,20 @@
+x-default: &default
+  image: vvakame/review:3.0
+  volumes:
+    - .:/workdir
+  working_dir: /workdir
+
+version: '3.4'
+services:
+  c94-copybook-compile:
+    <<: *default
+    entrypoint:
+      - npm
+      - run
+      - pdf
+  c94-copybook-lint:
+    <<: *default
+    entrypoint:
+      - npm
+      - run
+      - lint
